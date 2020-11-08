@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp"
+        tools:context=".ui.HomeFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_border"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/routeSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:smsp_floatingLabelColor="@color/colorPrimary"
+                app:smsp_floatingLabelText="Select your route"
+                app:smsp_hint="Routes"
+                app:smsp_hintColor="#D3CDBD"
+                app:smsp_itemColor="#512DA8"
+                app:smsp_itemListColor="@android:color/black"
+                app:smsp_itemListHintBackgroundColor="@color/colorPrimaryDark"
+                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/colorPrimaryDark"
+
+                />
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/sourceSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:smsp_floatingLabelColor="@color/colorPrimary"
+                app:smsp_floatingLabelText="Select your source"
+                app:smsp_hint="Source"
+                app:smsp_hintColor="#D3CDBD"
+                app:smsp_itemColor="#512DA8"
+                app:smsp_itemListColor="@android:color/black"
+                app:smsp_itemListHintBackgroundColor="@color/colorPrimaryDark"
+                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/colorPrimaryDark"
+
+                />
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/destinationSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:smsp_floatingLabelColor="@color/colorPrimary"
+                app:smsp_floatingLabelText="Select your destination"
+                app:smsp_hint="Destination"
+                app:smsp_hintColor="#D3CDBD"
+                app:smsp_itemColor="#512DA8"
+                app:smsp_itemListColor="@android:color/black"
+                app:smsp_itemListHintBackgroundColor="@color/colorPrimaryDark"
+                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/colorPrimaryDark"
+
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Search result"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/busRV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/layout_border"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp" />
+
+    </LinearLayout>
+</layout>

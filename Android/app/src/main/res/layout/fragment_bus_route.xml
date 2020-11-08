@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
+        android:orientation="vertical"
         tools:context=".ui.BusRouteFragment">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dhaka Transport"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
         <ListView
             android:id="@+id/routeLV"
+            android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none"/>
-    </FrameLayout>
+    </LinearLayout>
 </layout>

@@ -1,80 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
+
     <LinearLayout
+        android:id="@+id/aboutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_info"
-            />
+            android:src="@drawable/ic_info" />
+
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:text="About us"/>
+            android:layout_marginLeft="10dp"
+            android:text="About us"
+            android:textColor="#000" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:id="@+id/feedBackBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_info"
-            />
+            android:src="@drawable/ic_baseline_message_24" />
+
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:text="Rate us"/>
+            android:layout_marginLeft="10dp"
+            android:text="Send feedback"
+            android:textColor="#000" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:id="@+id/busImageBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_info"
-            />
+            android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:text="feedback"/>
+            android:layout_marginLeft="10dp"
+            android:text="Send bus image"
+            android:textColor="#000" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:id="@+id/rateBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_info"
-            />
+            android:src="@drawable/ic_baseline_star_24" />
+
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:text="Send bus image"/>
+            android:layout_marginLeft="10dp"
+            android:text="Rate us"
+            android:textColor="#000" />
     </LinearLayout>
 
 </LinearLayout>

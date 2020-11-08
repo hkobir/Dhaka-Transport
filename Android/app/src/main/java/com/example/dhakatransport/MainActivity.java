@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         binding.menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MenuSheet sheet = new MenuSheet();
+                MenuSheet sheet = new MenuSheet(navController);
                 sheet.show(getSupportFragmentManager(), "MenuSheet");
 
             }

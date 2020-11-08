@@ -9,27 +9,6 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dhaka Transport"
-                    android:textColor="@android:color/white"
-                    android:textSize="19sp" />
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
 
         <RelativeLayout
             android:id="@+id/nav_view"
@@ -89,7 +68,7 @@
             app:layout_constraintBottom_toTopOf="@+id/nav_view"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolBar"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_weight="1"
             app:navGraph="@navigation/nav_graph" />
 

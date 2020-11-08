@@ -15,8 +15,4 @@
         android:name="com.example.dhakatransport.ui.BusRouteFragment"
         android:label="fragment_bus_route"
         tools:layout="@layout/fragment_bus_route" />
-    <dialog
-        android:id="@+id/menuSheet"
-        android:name="com.example.dhakatransport.ui.MenuSheet"
-        android:label="MenuSheet" />
 </navigation>

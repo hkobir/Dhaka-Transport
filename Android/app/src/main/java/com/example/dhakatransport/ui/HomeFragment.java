@@ -52,10 +52,12 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM3 = "param3";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int mParam1;
+    private int mParam2;
+    private int mParam3;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -70,11 +72,12 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
+    public static HomeFragment newInstance(int param1, int param2, int param3) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, param1);
+        args.putInt(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -83,10 +86,14 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getInt(ARG_PARAM1);
+            mParam2 = getArguments().getInt(ARG_PARAM2);
+            mParam3 = getArguments().getInt(ARG_PARAM3);
+
         }
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -150,7 +157,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Log.d("RouteError: ", error.getMessage());
+//                Log.d("RouteError: ", error.getMessage());
             }
         });
         requestQueue.add(jsonObjectRequest);
@@ -162,16 +169,17 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch (adapterView.getId()) {
             case R.id.routeSP:
-                progressDialog.show();
                 sourceList.clear();
                 destinationList.clear();
                 routeId = String.valueOf(adapterView.getSelectedItemPosition() + 1);
                 routeName = "r" + routeId;  //parse route name as r1, r2, ...
                 placeUrl = "https://hkobir10.000webhostapp.com/localbus/api/places/" + routeId;
                 requestQueue = Volley.newRequestQueue(context);
+                progressDialog.show();
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, placeUrl, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+
                         try {
                             JSONArray jsonArray = response.getJSONArray("places");
                             for (int i = 0; i < jsonArray.length(); i++) {
@@ -223,12 +231,13 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             Log.d("BusApiURL: ", busUrl);
 
             busList.clear();
-            progressDialog.show();
             requestQueue = Volley.newRequestQueue(context);
+            progressDialog.show();
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                     busUrl, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
+
                     try {
                         routeDetail = response.getJSONObject("route").optString("route_name");
                         JSONArray jsonArray = response.getJSONArray("buses");
@@ -256,6 +265,10 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
             requestQueue.add(jsonObjectRequest);
         }
+
+
     }
+
+
 
 }

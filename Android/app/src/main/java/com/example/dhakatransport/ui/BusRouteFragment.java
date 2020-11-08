@@ -1,6 +1,8 @@
 package com.example.dhakatransport.ui;
 
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -85,6 +87,8 @@ public class BusRouteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getRoutData();
+
+
     }
 
     private void getRoutData() {
@@ -100,8 +104,22 @@ public class BusRouteFragment extends Fragment {
         busList.add(bus5);
         Bus bus6 = new Bus("Himachol", "Metro Hall", "Mirpur 12");
         busList.add(bus6);
-        Bus bus7 = new Bus("Labbaik", "Savar", "Sign Board");
+        Bus bus7 = new Bus("RAIDA ENTERPRISE", "Diabari", "Postogola");
         busList.add(bus7);
+        Bus bus8 = new Bus("SALSABIL", "Postogola", "Gajipur");
+        busList.add(bus8);
+        Bus bus9 = new Bus("Labbaik", "Savar", "Sign Board");
+        busList.add(bus9);
+        Bus bus10 = new Bus("BALAKA", "Sayedabad", "Tongi");
+        busList.add(bus10);
+        Bus bus11 = new Bus("TORONGO PLUS", "Mohammadpur", "Banasree");
+        busList.add(bus11);
+        Bus bus12 = new Bus("ACHIM PORIBAHAN ", "Gabtoli", "Rampura");
+        busList.add(bus12);
+        Bus bus13 = new Bus("SHADHIN", "Mohammadpur", "Demra");
+        busList.add(bus13);
+        Bus bus14 = new Bus("Chiriyakhana", "Savar", "Kamalapur");
+        busList.add(bus14);
 
         initBusListView();
     }
@@ -110,4 +128,5 @@ public class BusRouteFragment extends Fragment {
         routeListAdapter = new RouteListAdapter(busList);
         binding.routeLV.setAdapter(routeListAdapter);
     }
+
 }

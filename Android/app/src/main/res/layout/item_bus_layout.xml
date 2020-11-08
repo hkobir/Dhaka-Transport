@@ -7,6 +7,7 @@
 
     <ImageView
         android:id="@+id/busIV"
+        android:layout_marginTop="10dp"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_baseline_directions_bus_24"
@@ -37,8 +38,7 @@
         app:layout_constraintStart_toEndOf="@+id/busIV"
         app:layout_constraintTop_toBottomOf="@id/busNameTV" />
     <View
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="10dp"
         android:background="@color/colorGrey"
         app:layout_constraintTop_toBottomOf="@+id/routeNameTV"
         android:layout_width="match_parent"

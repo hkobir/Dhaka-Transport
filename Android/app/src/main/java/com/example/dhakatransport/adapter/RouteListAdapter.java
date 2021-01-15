@@ -1,53 +1,86 @@
 package com.example.dhakatransport.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.dhakatransport.R;
 import com.example.dhakatransport.models.Bus;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class RouteListAdapter extends BaseAdapter {
+public class RouteListAdapter extends ArrayAdapter<Bus> {
     private List<Bus> busList;
+    private ArrayList<Bus> arrayList; //used for the search bar
+    private LayoutInflater mInflater;
+    private int layoutResource;
+    private Context mContext;
 
+    public RouteListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Bus> buses) {
+        super(context, resource, buses);
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layoutResource = resource;
+        this.mContext = context;
 
-    public RouteListAdapter(List<Bus> busList) {
-        this.busList = busList;
+        this.busList = buses;
+        arrayList = new ArrayList<>();
+        this.arrayList.addAll(busList);
+    }
+
+    private static class ViewHolder {
+        AppCompatTextView bName, sName, dName;
+
     }
 
     @Override
-    public int getCount() {
-        return busList.size();
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        final ViewHolder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(layoutResource, parent, false);
+            holder = new ViewHolder();
 
-    @Override
-    public Object getItem(int i) {
-        return busList.get(i);
-    }
+            holder.bName = convertView.findViewById(R.id.bus_name);
+            holder.sName = convertView.findViewById(R.id.source_name);
+            holder.dName = convertView.findViewById(R.id.dest_name);
 
-    @Override
-    public long getItemId(int i) {
-        return i;
-    }
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        if (view == null) {
-            view = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.item_bus_route_layoute, viewGroup, false);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
-        Bus cBus = busList.get(i);
-        AppCompatTextView bName = view.findViewById(R.id.bus_name);
-        AppCompatTextView sName = view.findViewById(R.id.source_name);
-        AppCompatTextView dName = view.findViewById(R.id.dest_name);
-        bName.setText(cBus.getBusName());
-        sName.setText(cBus.getSourceName());
-        dName.setText(cBus.getDestinationName());
-        return view;
+
+        holder.bName.setText(getItem(position).getBusName());
+        holder.sName.setText(getItem(position).getSourceName());
+        holder.dName.setText(getItem(position).getDestinationName());
+
+
+        return convertView;
+    }
+
+    // filter name in Search Bar
+    public void filter(String characterText) {
+        characterText = characterText.toLowerCase(Locale.getDefault());
+        busList.clear();
+        if (characterText.length() == 0) {
+            busList.addAll(arrayList);
+        } else {
+            busList.clear();
+            for (Bus bus : arrayList) {
+                if (bus.getBusName().toLowerCase(Locale.getDefault()).contains(characterText)) {
+                    busList.add(bus);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

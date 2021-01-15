@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.BusRouteFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.BusRouteFragment">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:id="@+id/relLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dhaka Transport"
-                    android:textColor="@android:color/white"
-                    android:textSize="19sp" />
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
-        <ListView
-            android:id="@+id/routeLV"
-            android:padding="8dp"
+            <include layout="@layout/snippet_search_toolbar" />
+
+            <include layout="@layout/snippet_view_route_toolbar" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none"/>
-    </LinearLayout>
-</layout>
+            android:layout_below="@+id/relLayout1">
+
+            <ListView
+                android:id="@+id/routeLV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:scrollbars="none" />
+
+            <TextView
+                android:id="@+id/textNoContacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/black"
+                android:textSize="25sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
